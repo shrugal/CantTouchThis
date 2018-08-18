@@ -1,0 +1,8 @@
+## Interface: 80000
+## Title: CantTouchThis
+## Notes: Remember and show if mobs are immune to crowd control.
+## Version: 0-alpha1
+## SavedVariables: CantTouchThisDB
+
+Libs\libs.xml
+CantTouchThis.lua
