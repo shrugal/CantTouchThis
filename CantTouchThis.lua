@@ -54,7 +54,7 @@ function Addon.COMBAT_LOG_EVENT_UNFILTERED()
     -- Check if it's a CC we are interested in
     if bit.band(info, PS.constants.CROWD_CTRL) > 0 and bit.band(details, Addon.CC_TYPES) > 0 then
         local npcId = Addon.GetNPCId(destGUID)
-        if npcId then
+        if npcId and not Addon.immuneKnown[npcId] then
             if event == "SPELL_AURA_APPLIED" then
                 Addon.stunned[npcId] = true
                 Addon.immuneFound[npcId] = nil
