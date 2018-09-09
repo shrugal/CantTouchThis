@@ -17,7 +17,7 @@ Please describe the bug as clearly as you can, and add as much info as you think
 3. The error appears
 
 **Addon version**
-Can be seen at the top of the first options page, or the top right of the rolls overview window.
+E.g. v1.1
 
 **Your region, realm and language setting**
 E.g. EU-Mal'Ganis, English
