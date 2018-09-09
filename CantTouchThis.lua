@@ -36,6 +36,9 @@ function Addon.ADDON_LOADED(name)
     if name == Name then
         CantTouchThisDB = CantTouchThisDB or Addon.immuneFound
         Addon.immuneFound = CantTouchThisDB
+
+        -- Remove known NPCs from the list
+        for npcId in pairs(Addon.immuneKnown) do Addon.immuneFound[npcId] = nil end
     end
 end
 
@@ -140,8 +143,11 @@ Addon.immuneKnown = {
     [137969] = true,
     [138255] = true,
     [138281] = true,
+    [138288] = true,
     [138465] = true,
     [139110] = true,
+    [139233] = true,
     [139425] = true,
+    [140398] = true,
     [144086] = true,
 }
