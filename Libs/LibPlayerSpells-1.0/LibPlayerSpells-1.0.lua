@@ -58,8 +58,6 @@ local band = _G.bit.band
 local bxor = _G.bit.bxor
 local bnot = _G.bit.bnot
 
-print("BLUB")
-
 -- Basic constants use for the bitfields
 lib.constants = {
 	-- Special types -- these alters how the 13 lower bits are to be interpreted
