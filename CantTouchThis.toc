@@ -1,7 +1,7 @@
 ## Interface: 80000
 ## Title: CantTouchThis
 ## Notes: Remember and show if mobs are immune to crowd control.
-## Version: 1.01
+## Version: 1.02
 ## SavedVariables: CantTouchThisDB
 
 Libs\libs.xml
