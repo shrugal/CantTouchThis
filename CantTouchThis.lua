@@ -11,15 +11,10 @@ Addon.CC_TYPES = bit.bor(PS.constants.DISORIENT, PS.constants.INCAPACITATE, PS.c
 --                      Locale                       --
 -------------------------------------------------------
 
-local locale, L = GetLocale(), {}
-
--- enUS
-L["CC_IMMUNE"] = "Immune to crowd control"
-
--- deDE
-if locale == "deDE" then
-    L["CC_IMMUNE"] = "Immun gegen Kontrolleffekte"
-end
+local LINE = ({
+    deDE = "Immun gegen Kontrolleffekte",
+    zhCN = "免疫群体控制"
+})[GetLocale()] or "Immune to crowd control"
 
 -------------------------------------------------------
 --                   Events/Hooks                    --
@@ -76,7 +71,7 @@ GameTooltip:HookScript('OnTooltipSetUnit', function(self)
         if guid then
         local npcId = Addon.GetNPCId(guid)
             if npcId and Addon.immuneFound[npcId] or Addon.immuneKnown[npcId] then
-                GameTooltip:AddLine(L["CC_IMMUNE"])
+                GameTooltip:AddLine(LINE)
             end
         end
     end
@@ -107,6 +102,48 @@ Addon.immuneFound = {}
 
 -- Immune NPCs that are known already
 Addon.immuneKnown = {
+	[120850] = true,
+	[127072] = true,
+	[127315] = true,
+	[128184] = true,
+	[128455] = true,
+	[129214] = true,
+	[129231] = true,
+	[129552] = true,
+	[129699] = true,
+	[129802] = true,
+	[131156] = true,
+	[131157] = true,
+	[131812] = true,
+	[131825] = true,
+	[131863] = true,
+	[131864] = true,
+	[132253] = true,
+	[133172] = true,
+	[133379] = true,
+	[133389] = true,
+	[133935] = true,
+	[134629] = true,
+	[134739] = true,
+	[134993] = true,
+	[135329] = true,
+	[135365] = true,
+	[135475] = true,
+	[135759] = true,
+	[136076] = true,
+	[136100] = true,
+	[136391] = true,
+	[137478] = true,
+	[137486] = true,
+	[138489] = true,
+	[139422] = true,
+	[139946] = true,
+	[140615] = true,
+	[141806] = true,
+	[148550] = true,
+	[31146] = true,
+	[64587] = true,
+	[65310] = true,
     [122965] = true,
     [122968] = true,
     [122984] = true,
