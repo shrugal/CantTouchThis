@@ -1,9 +1,13 @@
-## Interface: 80000
+## Interface: 80200
 ## Title: CantTouchThis
 ## Notes: Remember and show if mobs are immune to crowd control.
 ## Notes-deDE: Merke und zeige, wenn Gegner gegen Kontrolleffekte immun sind.
-## Version: 1.02
+## Version: @project-version@
 ## SavedVariables: CantTouchThisDB
 
 Libs\libs.xml
 CantTouchThis.lua
+
+#@do-not-package@
+## Version: 0-dev0
+#@end-do-not-package@
