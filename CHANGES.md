@@ -1,3 +1,1 @@
 - Updated NPC list
-- Updated TOC version
-- Updated readme, added changes and changelog
