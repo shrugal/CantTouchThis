@@ -1,3 +1,6 @@
+Version 1.04
+- Updated NPC list
+
 Version 1.03
 - Updated NPC list
 - Updated TOC version
