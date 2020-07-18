@@ -1,2 +1,1 @@
-- Updated TOC version for 8.3
 - Updated NPC list
