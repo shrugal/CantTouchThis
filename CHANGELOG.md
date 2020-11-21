@@ -1,3 +1,6 @@
+Version 1.06
+- Updated NPC list
+
 Version 1.05
 - Updated TOC version for 8.3
 - Updated NPC list
