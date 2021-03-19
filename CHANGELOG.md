@@ -1,3 +1,7 @@
+Version 1.07
+- Updated TOC version for patch 9.0.2
+- Updated NPC list
+
 Version 1.06
 - Updated NPC list
 
