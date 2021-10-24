@@ -1,2 +1,1 @@
-- Updated TOC version for patch 9.0.5
-- Updated NPC list
+- Updated ToC version for patch 9.1.5
