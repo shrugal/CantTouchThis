@@ -22,7 +22,7 @@ local LINE = ({
 
 -- Register events
 Addon.frame = CreateFrame("Frame")
-Addon.frame:SetScript("OnEvent", function (self, e, ...) Addon[e](...) end)
+Addon.frame:SetScript("OnEvent", function(self, e, ...) Addon[e](...) end)
 Addon.frame:RegisterEvent("ADDON_LOADED")
 Addon.frame:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 
@@ -50,30 +50,33 @@ function Addon.COMBAT_LOG_EVENT_UNFILTERED()
     if not (info and details) then return end
 
     -- Check if it's a CC we are interested in
-    if bit.band(info, PS.constants.CROWD_CTRL) > 0 and bit.band(details, Addon.CC_TYPES) > 0 then
-        local npcId = Addon.GetNPCId(destGUID)
-        if npcId and not Addon.immuneKnown[npcId] then
-            if event == "SPELL_AURA_APPLIED" then
-                Addon.stunned[npcId] = true
-                Addon.immuneFound[npcId] = nil
-            elseif event == "SPELL_MISSED" and not Addon.stunned[npcId] then
-                Addon.immuneFound[npcId] = true
-            end
-        end
+    if bit.band(info, PS.constants.CROWD_CTRL) == 0 or bit.band(details, Addon.CC_TYPES) == 0 then return end
+
+    -- Check if the NPC is valid and if we know its immunity yet
+    local npcId = Addon.GetNPCId(destGUID)
+    if not npcId then return end
+
+    if event == "SPELL_AURA_APPLIED" then
+        Addon.stunned[npcId] = true
+        Addon.immuneFound[npcId] = Addon.immuneKnown[npcId] and false or nil
+    elseif event == "SPELL_MISSED" and not Addon.stunned[npcId] then
+        Addon.immuneFound[npcId] = true
     end
 end
 
 -- Unit tooltip
-GameTooltip:HookScript('OnTooltipSetUnit', function(self)
-    local name, unit = GameTooltip:GetUnit()
-    if unit or name then
-        local guid = UnitGUID(unit or name)
-        if guid then
-        local npcId = Addon.GetNPCId(guid)
-            if npcId and Addon.immuneFound[npcId] or Addon.immuneKnown[npcId] then
-                GameTooltip:AddLine(LINE)
-            end
-        end
+TooltipDataProcessor.AddTooltipPostCall(Enum.TooltipDataType.Unit, function(tooltip)
+    local name, unit = tooltip:GetUnit()
+    if not (unit or name) then return end
+
+    local guid = UnitGUID(unit or name)
+    if not guid then return end
+
+    local npcId = Addon.GetNPCId(guid)
+    if not npcId then return end
+
+    if Addon.immuneFound[npcId] or Addon.immuneFound[npcId] ~= false and Addon.immuneKnown[npcId] then
+        tooltip:AddLine(LINE)
     end
 end)
 
@@ -432,6 +435,7 @@ Addon.immuneKnown = {
     [118462] = true,
     [118523] = true,
     [118729] = true,
+    [118791] = true,
     [119107] = true,
     [120019] = true,
     [120021] = true,
@@ -886,6 +890,7 @@ Addon.immuneKnown = {
     [154564] = true,
     [154565] = true,
     [154583] = true,
+    [154586] = true,
     [154641] = true,
     [154727] = true,
     [154816] = true,
@@ -1077,12 +1082,14 @@ Addon.immuneKnown = {
     [166140] = true,
     [166142] = true,
     [166146] = true,
+    [166266] = true,
     [166393] = true,
     [166521] = true,
     [166644] = true,
     [166969] = true,
     [166970] = true,
     [167111] = true,
+    [167524] = true,
     [167527] = true,
     [167533] = true,
     [167534] = true,
@@ -1113,6 +1120,7 @@ Addon.immuneKnown = {
     [168934] = true,
     [168942] = true,
     [168973] = true,
+    [168988] = true,
     [169035] = true,
     [169102] = true,
     [169157] = true,
@@ -1152,6 +1160,7 @@ Addon.immuneKnown = {
     [173195] = true,
     [173276] = true,
     [173280] = true,
+    [173360] = true,
     [173444] = true,
     [173445] = true,
     [173446] = true,
@@ -1181,4 +1190,6 @@ Addon.immuneKnown = {
     [175877] = true,
     [175992] = true,
     [176173] = true,
+    [179472] = true,
+    [179760] = true,
 }

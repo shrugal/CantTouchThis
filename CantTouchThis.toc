@@ -1,4 +1,4 @@
-## Interface: 90200
+## Interface: 100002
 ## Title: CantTouchThis
 ## Notes: Remember and show if mobs are immune to crowd control.
 ## Notes-deDE: Merke und zeige, wenn Gegner gegen Kontrolleffekte immun sind.
