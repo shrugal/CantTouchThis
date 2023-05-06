@@ -1,3 +1,8 @@
+Version 1.11
+
+- Updated ToC version for patch 10.0
+- Fixed errors from 10.0 changes
+
 Version 1.10
 
 - Updated ToC version for patch 9.2
